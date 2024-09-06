@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
 import Profile from "@components/Profile";
@@ -29,4 +29,12 @@ const UserProfile = ({ params }) => {
     )
 }
 
-export default UserProfile;
+const Page = ({ params }) => {
+    return (
+        <Suspense>
+            <UserProfile params={params} />
+        </Suspense>
+    )
+}
+
+export default Page;
